@@ -1,0 +1,33 @@
+name: Add top membership fees
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-top-membership-fees.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add membership fees to top page
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          old = '''<article class="card"><h3>正式入会</h3><p>継続して稲盛経営哲学を学び、実践を深めたい方向けです。</p><a class="btn btn-secondary" target="_blank" href="https://docs.google.com/forms/d/19fqrunsppTNlClQSetYxbtdNYejYbfOwXlP0xLn5xbY/viewform">2026年 入会申込フォーム</a></article>'''
+          new = '''<article class="card"><h3>正式入会</h3><p>継続して稲盛経営哲学を学び、実践を深めたい方向けです。</p><ul class="bullet"><li><strong>年会費：</strong>一般会員 50,000円 ／ 塾生企業の役員・従業員 35,000円</li><li><strong>入会対象：</strong>経営者・後継者・会社幹部・リーダー・従業員など</li><li><strong>支払い時期：</strong>入会時／年度ごと</li><li><strong>月例会参加費：</strong>塾生は原則無料</li><li><strong>その他：</strong>合同例会や特別行事では別途費用がかかる場合があります</li></ul><a class="btn btn-secondary" target="_blank" href="https://docs.google.com/forms/d/19fqrunsppTNlClQSetYxbtdNYejYbfOwXlP0xLn5xbY/viewform">2026年 入会申込フォーム</a></article>'''
+          if old not in s:
+              raise SystemExit('Target membership block not found')
+          p.write_text(s.replace(old, new, 1), encoding='utf-8')
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Add membership fees to top page"
+          git push
