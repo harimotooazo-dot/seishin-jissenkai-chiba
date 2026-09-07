@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://harimotooazo-dot.github.io/seishin-jissenkai-chiba/sitemap.xml
