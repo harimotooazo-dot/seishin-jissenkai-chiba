@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://harimotooazo-dot.github.io/seishin-jissenkai-chiba/sitemap.xml
+# redeploy 2026-09-08
