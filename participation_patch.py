@@ -15,6 +15,12 @@ html = html.replace(
     ">例会に参加する・出欠を登録する</a><p style=\"margin:10px 0 0;color:#74656a;font-size:14px\">会員・オブザーバー共通の申込フォームです。フォーム内で参加区分を選択してください。</p>"
 )
 
+# 次回例会の案内画像を、日時・会場などの詳細情報の前に配置
+poster = '<div style="max-width:760px;margin:0 auto 30px;text-align:center"><img src="2026-09-meeting.png" alt="盛心実践会千葉・心を高める経営を伸ばす会佐倉 2026年9月度合同自主例会のご案内" style="display:block;width:100%;height:auto;border-radius:18px;box-shadow:0 12px 30px rgba(107,31,43,.12)"></div>'
+marker = '<div class="event-body">'
+if 'src="2026-09-meeting.png"' not in html and marker in html:
+    html = html.replace(marker, marker + poster, 1)
+
 # 参加方法欄は一般向けの説明なので「オブザーバー参加」の表現を残し、リンクだけTallyへ
 html = html.replace(
     'href="#observer">まずはオブザーバー参加</a>',
