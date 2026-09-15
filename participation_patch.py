@@ -24,6 +24,11 @@ if 'src="2026-09-meeting.png"' not in html and marker in html:
 # 画像と情報が重複するため、従来の大きな3列「開催日時・会場・住所」は非表示にする
 html = html.replace('<div class="event-meta">', '<div class="event-meta" style="display:none">', 1)
 
+# 「今回のテーマ」の文字階層を明確にする
+old_theme = '''<div class="event-intro"><h3>今回のテーマ</h3><p><strong>稲盛経営12ヵ条　第4条「誰にも負けない努力をする」</strong><br>～地味な仕事を一歩一歩堅実に、弛まぬ努力を続ける～</p>'''
+new_theme = '''<div class="event-intro"><div style="display:inline-block;margin-bottom:14px;padding:6px 14px;border-radius:999px;background:#6b1f2b;color:#fff;font-size:14px;font-weight:800;letter-spacing:.08em">今回のテーマ</div><div style="margin:0 0 8px;color:#2f2023;font-size:clamp(22px,2.7vw,34px);font-weight:900;line-height:1.45">稲盛経営12ヵ条 第4条<br><span style="color:#7b1f2b">「誰にも負けない努力をする」</span></div><p style="margin:0 0 22px;color:#5f5054;font-size:clamp(15px,1.5vw,18px);font-weight:700;line-height:1.7">～地味な仕事を一歩一歩堅実に、弛まぬ努力を続ける～</p>'''
+html = html.replace(old_theme, new_theme, 1)
+
 # ページ下部にある同じ申込ボタンは重複するため削除（上部CTAに一本化）
 old_bottom = '<div class="event-actions"><a class="btn btn-primary" target="_blank" rel="noopener" href="https://tally.so/r/LZeJ4G">例会に参加する・出欠を登録する</a><p style="margin:10px 0 0;color:#74656a;font-size:14px">会員・オブザーバー共通の申込フォームです。フォーム内で参加区分を選択してください。</p></div>'
 html = html.replace(old_bottom, '', 1)
