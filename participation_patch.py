@@ -15,11 +15,18 @@ html = html.replace(
     ">例会に参加する・出欠を登録する</a><p style=\"margin:10px 0 0;color:#74656a;font-size:14px\">会員・オブザーバー共通の申込フォームです。フォーム内で参加区分を選択してください。</p>"
 )
 
-# 次回例会の案内画像を、日時・会場などの詳細情報の前に配置
-poster = '<div style="max-width:760px;margin:0 auto 30px;text-align:center"><img src="2026-09-meeting.png" alt="盛心実践会千葉・心を高める経営を伸ばす会佐倉 2026年9月度合同自主例会のご案内" style="display:block;width:100%;height:auto;border-radius:18px;box-shadow:0 12px 30px rgba(107,31,43,.12)"></div>'
+# 次回例会の案内画像を先頭に配置し、その直下に申込ボタンとコンパクトな開催情報を表示
+poster_block = '''<div style="max-width:760px;margin:0 auto 24px;text-align:center"><img src="2026-09-meeting.png" alt="盛心実践会千葉・心を高める経営を伸ばす会佐倉 2026年9月度合同自主例会のご案内" style="display:block;width:100%;height:auto;border-radius:18px;box-shadow:0 12px 30px rgba(107,31,43,.12)"></div><div style="text-align:center;margin:0 0 26px"><a class="btn btn-primary" target="_blank" rel="noopener" href="https://tally.so/r/LZeJ4G">例会に参加する・出欠を登録する</a><p style="margin:10px 0 0;color:#74656a;font-size:14px">会員・オブザーバー共通の申込フォームです。フォーム内で参加区分を選択してください。</p></div><div style="margin:0 0 28px;padding:15px 18px;border-radius:16px;background:#f2e8ea;text-align:center;line-height:1.7"><strong>2026年9月29日（火）18:00〜21:00</strong><br>グリーンセミナールーム（千葉駅 徒歩約10分）<br><span style="font-size:14px;color:#74656a">千葉県千葉市中央区富士見2丁目8-14 エキニア千葉4F</span></div>'''
 marker = '<div class="event-body">'
 if 'src="2026-09-meeting.png"' not in html and marker in html:
-    html = html.replace(marker, marker + poster, 1)
+    html = html.replace(marker, marker + poster_block, 1)
+
+# 画像と情報が重複するため、従来の大きな3列「開催日時・会場・住所」は非表示にする
+html = html.replace('<div class="event-meta">', '<div class="event-meta" style="display:none">', 1)
+
+# ページ下部にある同じ申込ボタンは重複するため削除（上部CTAに一本化）
+old_bottom = '<div class="event-actions"><a class="btn btn-primary" target="_blank" rel="noopener" href="https://tally.so/r/LZeJ4G">例会に参加する・出欠を登録する</a><p style="margin:10px 0 0;color:#74656a;font-size:14px">会員・オブザーバー共通の申込フォームです。フォーム内で参加区分を選択してください。</p></div>'
+html = html.replace(old_bottom, '', 1)
 
 # 参加方法欄は一般向けの説明なので「オブザーバー参加」の表現を残し、リンクだけTallyへ
 html = html.replace(
