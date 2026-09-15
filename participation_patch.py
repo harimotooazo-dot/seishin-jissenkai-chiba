@@ -5,6 +5,10 @@ TALLY = "https://tally.so/r/LZeJ4G"
 p = Path("index.html")
 html = p.read_text(encoding="utf-8")
 
+# 正式名称に統一
+html = html.replace("心高会 佐倉", "心を高める経営を伸ばす会 佐倉")
+html = html.replace("心高会　佐倉", "心を高める経営を伸ばす会 佐倉")
+
 html = html.replace("https://forms.gle/R7KaSbq9iwH9X8Yq6", TALLY)
 html = html.replace(
     ">この勉強会にオブザーバー参加する</a>",
@@ -34,7 +38,6 @@ old_observer = '''<div class="event-intro"><h3>初めての方・オブザーバ
 new_observer = '''<div class="event-intro" style="padding:26px 28px;background:#fffaf9"><div style="display:inline-block;margin-bottom:12px;padding:5px 12px;border-radius:999px;background:#6b1f2b;color:#fff;font-size:13px;font-weight:900;letter-spacing:.08em">初めての方へ</div><h3 style="margin:0 0 14px;color:#2f2023;font-size:clamp(21px,2.2vw,29px);font-weight:900;line-height:1.45">オブザーバー参加について</h3><p style="margin:0;color:#66575b;line-height:1.9">塾生の皆さまはもちろん、オブザーバーの方、稲盛経営哲学を初めて学ぶ方もご参加いただけます。講話を視聴して終わるのではなく、参加した皆さんと意見を交わしながら、自分自身と自社の経営を見つめ直す例会です。</p></div>'''
 html = html.replace(old_observer, new_observer, 1)
 
-# 参加費は塾生と一般参加の2区分に整理。塾生の従業員はオブザーバーと同額のため個別表示しない。
 old_fee = '''<div class="fee-box"><strong>参加費</strong><br>塾生：無料 ／ 塾生の従業員：3,000円 ／ オブザーバー：5,000円<br>※当日会場にて集金・コンパ費用込み</div>'''
 new_fee = '''<div class="fee-box" style="padding:26px 28px;border-radius:20px"><div style="margin-bottom:18px;color:#2f2023;font-size:clamp(21px,2.2vw,28px);font-weight:900">参加費</div><div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px"><div style="padding:16px;border-radius:14px;background:#fff;text-align:center"><div style="font-weight:800;color:#66575b">塾生</div><div style="margin-top:5px;color:#7b1f2b;font-size:22px;font-weight:900">無料</div></div><div style="padding:16px;border-radius:14px;background:#fff;text-align:center"><div style="font-weight:800;color:#66575b">オブザーバー</div><div style="margin-top:5px;color:#7b1f2b;font-size:22px;font-weight:900">5,000円</div></div></div><p style="margin:14px 0 0;color:#74656a;font-size:14px">※当日会場にて集金・コンパ費用込み</p></div>'''
 html = html.replace(old_fee, new_fee, 1)
@@ -49,5 +52,7 @@ lp = Path("chiba-keieisha-benkyokai.html")
 if lp.exists():
     lhtml = lp.read_text(encoding="utf-8")
     lhtml = lhtml.replace("https://forms.gle/R7KaSbq9iwH9X8Yq6", TALLY)
+    lhtml = lhtml.replace("心高会 佐倉", "心を高める経営を伸ばす会 佐倉")
+    lhtml = lhtml.replace("心高会　佐倉", "心を高める経営を伸ばす会 佐倉")
     lhtml = lhtml.replace(">この勉強会にオブザーバー参加する</a>", ">例会に参加する・出欠を登録する</a>")
     lp.write_text(lhtml, encoding="utf-8")
