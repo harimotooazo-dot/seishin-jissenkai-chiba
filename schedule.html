@@ -46,8 +46,6 @@
 
     }
 
-    /* ヘッダー */
-
     .hero {
 
       text-align: center;
@@ -100,8 +98,6 @@
 
     }
 
-    /* メイン */
-
     main {
 
       padding: 24px 16px 32px;
@@ -122,11 +118,9 @@
 
     }
 
-    /* イベントカード */
-
     .event {
 
-      margin-bottom: 18px;
+      margin-bottom: 22px;
 
       border: 1px solid #dbe4ec;
 
@@ -176,6 +170,16 @@
 
     }
 
+    .event-image {
+
+      width: 100%;
+
+      height: auto;
+
+      display: block;
+
+    }
+
     .event-body {
 
       padding: 18px;
@@ -210,8 +214,6 @@
 
     }
 
-    /* ボタン */
-
     .buttons {
 
       display: grid;
@@ -228,7 +230,7 @@
 
       display: block;
 
-      padding: 13px 12px;
+      padding: 14px 12px;
 
       border-radius: 10px;
 
@@ -250,25 +252,11 @@
 
     }
 
-    .button-secondary {
-
-      background: #ffffff;
-
-      color: #0b4f82;
-
-      border: 1px solid #b9cddd;
-
-    }
-
-    /* 世界大会 */
-
     .world .event-head {
 
       background: linear-gradient(145deg, #164d79, #082f52);
 
     }
-
-    /* 案内 */
 
     .info {
 
@@ -287,8 +275,6 @@
       color: #31536f;
 
     }
-
-    /* メニューへ戻る */
 
     .back-area {
 
@@ -414,7 +400,7 @@
 
         <div class="event-date">
 
-          2026年9月
+          2026年9月29日（火）18:00〜21:00
 
         </div>
 
@@ -424,17 +410,17 @@
 
         </div>
 
-          </div>
+      </div>
 
-    <img src="2026-09-meeting-wide.png"
+      <img
 
-         alt="9月度 合同自主例会 稲盛経営12ヵ条 第4条 誰にも負けない努力をする"
+        class="event-image"
 
-         style="width:100%; height:auto; display:block;">
+        src="2026-09-meeting-wide.png"
 
-    <div class="event-body">
+        alt="9月度 合同自主例会">
 
-  
+      <div class="event-body">
 
         <div class="theme">
 
@@ -462,11 +448,13 @@
 
         <div class="buttons">
 
-          <a class="button button-primary"
+          <a
 
-             href="entry.html">
+            class="button button-primary"
 
-            勉強会に参加申込
+            href="entry.html#september">
+
+            9月度合同自主例会に申し込む
 
           </a>
 
@@ -484,7 +472,7 @@
 
         <div class="event-date">
 
-          2026年11月18日（水）10:30～
+          2026年11月18日（水）10:30〜
 
         </div>
 
@@ -496,21 +484,21 @@
 
         </div>
 
-          </div>
+      </div>
 
-    <img src="2026-11-world-convention.png"
+      <img
 
-         alt="第六回 心を高める 経営を伸ばす 世界大会"
+        class="event-image"
 
-         style="width:100%; height:auto; display:block;">
+        src="2026-11-world-convention.png"
 
-    <div class="event-body">
+        alt="第六回 心を高める 経営を伸ばす 世界大会">
 
-      
+      <div class="event-body">
 
         <p>
 
-          📍 京都国際会議場
+          📍 国立京都国際会館
 
         </p>
 
@@ -521,6 +509,20 @@
           全国・世界の仲間とともに深める大会です。
 
         </p>
+
+        <div class="buttons">
+
+          <a
+
+            class="button button-primary"
+
+            href="entry.html#world">
+
+            世界大会に申し込む
+
+          </a>
+
+        </div>
 
       </div>
 
@@ -544,9 +546,11 @@
 
   <div class="back-area">
 
-    <a class="back-button"
+    <a
 
-       href="menu/">
+      class="back-button"
+
+      href="menu/">
 
       ← メニューへ戻る
 
