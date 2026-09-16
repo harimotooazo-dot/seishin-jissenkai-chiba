@@ -1,1 +1,557 @@
+<!DOCTYPE html>
 
+<html lang="ja">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#0b3b67">
+
+  <title>活動スケジュール｜盛心実践会千葉</title>
+
+  <style>
+
+    * {
+
+      box-sizing: border-box;
+
+    }
+
+    body {
+
+      margin: 0;
+
+      font-family: -apple-system, BlinkMacSystemFont,
+
+        "Hiragino Sans", "Yu Gothic", "YuGothic", sans-serif;
+
+      background: #f4f7fa;
+
+      color: #102d49;
+
+    }
+
+    .page {
+
+      max-width: 620px;
+
+      min-height: 100vh;
+
+      margin: 0 auto;
+
+      background: #ffffff;
+
+    }
+
+    /* ヘッダー */
+
+    .hero {
+
+      text-align: center;
+
+      padding: 38px 20px 30px;
+
+      background: linear-gradient(180deg, #eaf5ff 0%, #ffffff 100%);
+
+      border-bottom: 1px solid #e1e8ef;
+
+    }
+
+    .small-title {
+
+      font-size: 12px;
+
+      letter-spacing: 0.16em;
+
+      color: #55728c;
+
+      margin-bottom: 12px;
+
+      font-weight: 700;
+
+    }
+
+    h1 {
+
+      margin: 0 0 10px;
+
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+
+      font-size: 30px;
+
+      letter-spacing: 0.04em;
+
+      color: #0b355b;
+
+    }
+
+    .hero p {
+
+      margin: 0;
+
+      font-size: 14px;
+
+      line-height: 1.7;
+
+      color: #55728c;
+
+    }
+
+    /* メイン */
+
+    main {
+
+      padding: 24px 16px 32px;
+
+    }
+
+    .section-title {
+
+      margin: 0 0 16px;
+
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+
+      font-size: 21px;
+
+      color: #0b3b67;
+
+      text-align: center;
+
+    }
+
+    /* イベントカード */
+
+    .event {
+
+      margin-bottom: 18px;
+
+      border: 1px solid #dbe4ec;
+
+      border-radius: 18px;
+
+      overflow: hidden;
+
+      background: #ffffff;
+
+      box-shadow: 0 5px 16px rgba(11, 53, 91, 0.09);
+
+    }
+
+    .event-head {
+
+      background: linear-gradient(145deg, #1264a3, #073a65);
+
+      color: white;
+
+      padding: 16px 18px;
+
+    }
+
+    .event-date {
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.04em;
+
+      opacity: 0.9;
+
+      margin-bottom: 6px;
+
+    }
+
+    .event-title {
+
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+
+      font-size: 19px;
+
+      font-weight: 700;
+
+      line-height: 1.5;
+
+    }
+
+    .event-body {
+
+      padding: 18px;
+
+    }
+
+    .event-body p {
+
+      margin: 0 0 9px;
+
+      font-size: 14px;
+
+      line-height: 1.7;
+
+    }
+
+    .theme {
+
+      padding: 13px 14px;
+
+      margin: 4px 0 14px;
+
+      border-radius: 10px;
+
+      background: #f2f7fb;
+
+      color: #173d60;
+
+      font-weight: 700;
+
+      line-height: 1.7;
+
+    }
+
+    /* ボタン */
+
+    .buttons {
+
+      display: grid;
+
+      grid-template-columns: 1fr;
+
+      gap: 9px;
+
+      margin-top: 15px;
+
+    }
+
+    .button {
+
+      display: block;
+
+      padding: 13px 12px;
+
+      border-radius: 10px;
+
+      text-align: center;
+
+      text-decoration: none;
+
+      font-size: 14px;
+
+      font-weight: 800;
+
+    }
+
+    .button-primary {
+
+      background: #0b4f82;
+
+      color: #ffffff;
+
+    }
+
+    .button-secondary {
+
+      background: #ffffff;
+
+      color: #0b4f82;
+
+      border: 1px solid #b9cddd;
+
+    }
+
+    /* 世界大会 */
+
+    .world .event-head {
+
+      background: linear-gradient(145deg, #164d79, #082f52);
+
+    }
+
+    /* 案内 */
+
+    .info {
+
+      margin-top: 26px;
+
+      padding: 18px;
+
+      background: #f4f8fb;
+
+      border-radius: 14px;
+
+      font-size: 13px;
+
+      line-height: 1.8;
+
+      color: #31536f;
+
+    }
+
+    /* メニューへ戻る */
+
+    .back-area {
+
+      padding: 0 16px 34px;
+
+    }
+
+    .back-button {
+
+      display: block;
+
+      padding: 15px;
+
+      border: 1px solid #cbd9e4;
+
+      border-radius: 12px;
+
+      text-align: center;
+
+      text-decoration: none;
+
+      color: #0b3b67;
+
+      font-weight: 800;
+
+      background: #ffffff;
+
+    }
+
+    footer {
+
+      background: #073a65;
+
+      color: white;
+
+      text-align: center;
+
+      padding: 28px 15px 34px;
+
+    }
+
+    footer strong {
+
+      display: block;
+
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+
+      font-size: 20px;
+
+      letter-spacing: 0.08em;
+
+      margin-bottom: 6px;
+
+    }
+
+    footer span {
+
+      font-size: 11px;
+
+      letter-spacing: 0.14em;
+
+      opacity: 0.8;
+
+    }
+
+    @media (max-width: 360px) {
+
+      h1 {
+
+        font-size: 27px;
+
+      }
+
+      .event-title {
+
+        font-size: 18px;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+  <header class="hero">
+
+    <div class="small-title">
+
+      SEISHIN JISSENKAI CHIBA
+
+    </div>
+
+    <h1>活動スケジュール</h1>
+
+    <p>
+
+      盛心実践会千葉の<br>
+
+      勉強会・例会・イベントのご案内
+
+    </p>
+
+  </header>
+
+  <main>
+
+    <h2 class="section-title">
+
+      今後の予定
+
+    </h2>
+
+    <!-- 9月度合同自主例会 -->
+
+    <section class="event">
+
+      <div class="event-head">
+
+        <div class="event-date">
+
+          2026年9月
+
+        </div>
+
+        <div class="event-title">
+
+          9月度 合同自主例会
+
+        </div>
+
+      </div>
+
+      <div class="event-body">
+
+        <div class="theme">
+
+          稲盛経営12ヵ条　第4条<br>
+
+          「誰にも負けない努力をする」
+
+        </div>
+
+        <p>
+
+          ～地味な仕事を一歩一歩堅実に、<br>
+
+          弛まぬ努力を続ける～
+
+        </p>
+
+        <p>
+
+          盛心実践会千葉・<br>
+
+          心を高める経営を伸ばす会 佐倉
+
+        </p>
+
+        <div class="buttons">
+
+          <a class="button button-primary"
+
+             href="entry.html">
+
+            勉強会に参加申込
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- 世界大会 -->
+
+    <section class="event world">
+
+      <div class="event-head">
+
+        <div class="event-date">
+
+          2026年11月18日（水）10:30～
+
+        </div>
+
+        <div class="event-title">
+
+          第六回<br>
+
+          心を高める 経営を伸ばす 世界大会
+
+        </div>
+
+      </div>
+
+      <div class="event-body">
+
+        <p>
+
+          📍 京都国際会議場
+
+        </p>
+
+        <p>
+
+          「心を高め、経営を伸ばす」という学びを、
+
+          全国・世界の仲間とともに深める大会です。
+
+        </p>
+
+      </div>
+
+    </section>
+
+    <div class="info">
+
+      <strong>活動スケジュールについて</strong><br><br>
+
+      盛心実践会千葉では、稲盛経営哲学を学び、
+
+      日々の経営で実践することを大切にしています。<br><br>
+
+      今後開催する勉強会・例会・大会などを、
+
+      このページで随時ご案内します。
+
+    </div>
+
+  </main>
+
+  <div class="back-area">
+
+    <a class="back-button"
+
+       href="menu/">
+
+      ← メニューへ戻る
+
+    </a>
+
+  </div>
+
+  <footer>
+
+    <strong>盛心実践会千葉</strong>
+
+    <span>
+
+      SEISHIN JISSENKAI CHIBA
+
+    </span>
+
+  </footer>
+
+</div>
+
+</body>
+
+</html>
