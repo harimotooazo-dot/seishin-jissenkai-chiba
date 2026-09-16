@@ -8,8 +8,8 @@ const SUPABASE_KEY='sb_publishable_rB2RnWFSQZ6M8x8bq18FuQ_KDwWXaTq';
 const client=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 const overlay=document.getElementById('loginOverlay'), form=document.getElementById('loginForm'), msg=document.getElementById('loginMsg'), button=document.getElementById('loginButton'), memberbar=document.getElementById('memberbar'), memberName=document.getElementById('memberName');
 async function authorize(user){
-  const {data,error}=await client.from('members').select('name,role,active').eq('user_id',user.id).maybeSingle();
-  if(error||!data||data.active!==true){await client.auth.signOut(); throw new Error('このアカウントは塾生専用ページを利用できません。');}
+  const {data,error}=await client.from('members').select('name,role,status').eq('user_id',user.id).maybeSingle();
+  if(error||!data||data.status!=='active'){await client.auth.signOut(); throw new Error('このアカウントは塾生専用ページを利用できません。');}
   memberName.textContent=(data.name||user.email)+' さん'; memberbar.style.display='flex'; overlay.style.display='none';
 }
 async function checkSession(){const {data:{session}}=await client.auth.getSession();if(session){try{await authorize(session.user)}catch(e){msg.textContent=e.message}}}
