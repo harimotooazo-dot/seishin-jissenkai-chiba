@@ -9,6 +9,10 @@ new = '''<div class="meeting-summary"><div class="meeting-summary-date">9月29�
 
 html = html.replace(old, new, 1)
 
+# 参加費はスマホで「塾生／無料」「オブザーバー／5,000円」を明確に分離する
+fee_grid = 'style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px"'
+html = html.replace(fee_grid, 'class="fee-options" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px"', 1)
+
 css = '''
 <style>
 .meeting-summary{margin:0 0 28px;padding:13px 16px;border-radius:14px;background:#f2e8ea;text-align:center;line-height:1.7;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
@@ -22,6 +26,8 @@ css = '''
   .meeting-summary-venue{margin-top:7px;display:block}
   .meeting-summary-venue strong{display:block;font-size:17px}
   .meeting-summary-venue span{display:block;margin-top:2px;font-size:14px}
+  .fee-options{grid-template-columns:1fr !important;gap:10px !important}
+  .fee-options > div{padding:15px 16px !important}
 }
 </style>
 '''
