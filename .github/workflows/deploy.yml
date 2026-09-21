@@ -32,6 +32,8 @@ jobs:
         run: python mobile_venue_patch.py
       - name: Place participation fee below venue details
         run: python fee_layout_patch.py
+      - name: Add world convention price comparison
+        run: python member_price_patch.py
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
