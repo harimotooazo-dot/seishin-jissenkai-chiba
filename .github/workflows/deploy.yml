@@ -42,6 +42,8 @@ jobs:
         run: python direct_entry_links_patch.py
       - name: Add event details to LINE entry page
         run: python entry_details_patch.py
+      - name: Remove standalone venue access from homepage
+        run: python remove_global_access_patch.py
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
