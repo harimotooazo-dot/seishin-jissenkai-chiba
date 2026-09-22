@@ -36,6 +36,8 @@ jobs:
         run: python member_price_patch.py
       - name: Improve member portal notices and meeting message
         run: python member_portal_patch.py
+      - name: Add September agenda to schedule page
+        run: python schedule_agenda_patch.py
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
