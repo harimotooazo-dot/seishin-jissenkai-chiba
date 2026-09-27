@@ -46,6 +46,8 @@ jobs:
         run: python remove_global_access_patch.py
       - name: Add detailed November golf event
         run: python golf_details_patch.py
+      - name: Add golf banner across event pages
+        run: python golf_image_patch.py
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
