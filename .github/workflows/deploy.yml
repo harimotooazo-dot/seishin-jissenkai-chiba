@@ -48,9 +48,7 @@ jobs:
         run: python golf_details_patch.py
       - name: Add golf banner across event pages
         run: python golf_image_patch.py
-      - name: Add Google Maps link for dinner venue
-        run: python eiko_map_patch.py
-      - name: Embed Google Map for dinner venue
+      - name: Embed compact Google Map for dinner venue
         run: python golf_map_embed_patch.py
       - name: Setup Pages
         uses: actions/configure-pages@v5
