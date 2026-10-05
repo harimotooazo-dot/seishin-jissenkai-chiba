@@ -6,7 +6,7 @@ const SUPABASE_URL='https://dkgxoiaaavktfkyiytzk.supabase.co';
 const SUPABASE_KEY='sb_publishable_rB2RnWFSQZ6M8x8bq18FuQ_KDwWXaTq';
 const client=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 const form=document.getElementById('loginForm'),msg=document.getElementById('loginMsg'),button=document.getElementById('loginButton');
-async function authorize(user){const {data,error}=await client.from('members').select('name,role,status').eq('user_id',user.id).maybeSingle();if(error||!data||data.status!=='active'){await client.auth.signOut();throw new Error('このアカウントは塾生専用ページを利用できません。');}window.location.replace('../member.html');}
+async function authorize(user){const {data,error}=await client.from('members').select('name,role,status').eq('user_id',user.id).maybeSingle();if(error||!data||data.status!=='active'){await client.auth.signOut();throw new Error('このアカウントは塾生専用ページを利用できません。');}window.location.replace('../member.html?v=20261005-2');}
 async function checkSession(){const {data:{session}}=await client.auth.getSession();if(session){try{await authorize(session.user)}catch(e){msg.textContent=e.message}}}
 form.addEventListener('submit',async(e)=>{e.preventDefault();msg.textContent='確認中です…';button.disabled=true;const email=document.getElementById('email').value.trim(),password=document.getElementById('password').value;const {data,error}=await client.auth.signInWithPassword({email,password});if(error){msg.textContent='メールアドレスまたはパスワードを確認してください。';button.disabled=false;return;}try{await authorize(data.user)}catch(err){msg.textContent=err.message;button.disabled=false;}});checkSession();
 </script></body></html>
