@@ -52,6 +52,8 @@ jobs:
         run: python golf_map_embed_patch.py
       - name: Archive completed September meeting
         run: python archive_september_patch.py
+      - name: Publish October meeting details
+        run: python october_meeting_patch.py
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
