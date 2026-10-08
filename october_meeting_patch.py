@@ -26,3 +26,24 @@ s, count = re.subn(r'<section><div class="wrap"><div class="section-title"><h2>�
 if count != 1:
     raise RuntimeError("Member next meeting not found")
 member.write_text(s, encoding="utf-8")
+
+# LINE group menu > participation applications.
+# September's finished event was removed earlier by archive_september_patch.py.
+entry = Path("entry.html")
+e = entry.read_text(encoding="utf-8")
+oct_entry = """<section class="event" id="october-2026">
+<div class="event-content">
+<div class="event-type">心を高める経営を伸ばす会｜10月度 定例勉強会</div>
+<h2>10月27日（火）経営問答シリーズ</h2>
+<div class="info"><strong>2026年10月27日（火）17:30〜21:35</strong><br>受付開始 17:15<br>Green セミナールーム Chiba<br>千葉市富士見2-8-14 エキニア千葉ビル4F<br>勉強会は会場・Zoom参加に対応</div>
+<div class="summary"><strong>稲盛塾長講話DVD「経営問答シリーズ」</strong><br>① No.1 社員のやる気を引き出す（18分）<br>② No.3 やりがいや充実感を持てる会社をどのように築くか（18分）<br>③ No.17 自らの思いを全社員に浸透させるには（26分）<br>各講話の後に20分間のディスカッションを行います。</div>
+<details class="details"><summary>当日の進行予定を見る</summary><div class="detail-body"><h3>勉強会（会場・Zoom）</h3><p>17:15　受付開始<br>17:30　開会・開会挨拶<br>17:35　塾長講話DVD視聴・各講話後ディスカッション<br>19:40　各グループから学びのまとめを発表<br>20:00　閉会挨拶</p><h3>コンパ</h3><p>20:10　開会挨拶・乾杯、歓談・ディスカッション<br>21:15　中締め・事務連絡<br>21:35　閉会</p><p>※終了時間は多少前後する場合があります。</p></div></details>
+<a class="button" href="https://chouseisan.com/s?h=36ade49b0c16413abab1e1b11fbbc8d7" target="_blank" rel="noopener noreferrer">10月勉強会の出欠を回答する（調整さん） →</a>
+<div class="summary" style="margin-top:14px"><strong>回答締切：10月20日（火）</strong><br>欠席の場合も回答フォームへ入力をお願いします。<br>出席回答後、やむを得ず欠席される場合は前日までにご連絡ください。<br>※当日キャンセルはキャンセル料を頂戴いたします。</div>
+</div></section>"""
+if 'id="october-2026"' not in e:
+    marker = '<section class="event" id="world">'
+    if marker not in e:
+        raise RuntimeError("LINE entry event insertion point not found")
+    e = e.replace(marker, oct_entry + "\\n" + marker, 1)
+entry.write_text(e, encoding="utf-8")
