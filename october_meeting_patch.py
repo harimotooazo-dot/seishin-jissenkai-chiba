@@ -45,5 +45,5 @@ if 'id="october-2026"' not in e:
     marker = '<section class="event" id="world">'
     if marker not in e:
         raise RuntimeError("LINE entry event insertion point not found")
-    e = e.replace(marker, oct_entry + "\\n" + marker, 1)
+    e = e.replace(marker, oct_entry + "\n" + marker, 1)
 entry.write_text(e, encoding="utf-8")
