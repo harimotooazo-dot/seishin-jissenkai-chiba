@@ -54,6 +54,8 @@ jobs:
         run: python archive_september_patch.py
       - name: Publish October meeting details
         run: python october_meeting_patch.py
+      - name: Update golf signup to Chouseisan
+        run: python golf_signup_update_patch.py
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
