@@ -44,8 +44,8 @@ s = s.replace(
     '</div></details></div></article><article class="event">', 1)
 # Place an obvious signup button above the fold, before expanded details.
 s = replace_one(
-    s, r'(<div class="golf-quick">.*?</div></div></div>)(<details class="golf-details">)',
-    lambda_placeholder := '<div class="golf-quick"><div><span>募集定員</span><strong>5組・20名（先着順）</strong></div><div><span>プレー費＋参加費</span><strong>14,800円＋5,000円</strong></div><div><span>申込締切</span><strong>11月16日（月）</strong></div></div>'
+    s, r'(<div class="golf-quick"><div><span>募集定員</span><strong>5組・20名（先着順）</strong></div><div><span>プレー費＋参加費</span><strong>14,800円＋5,000円</strong></div><div><span>申込締切</span><strong>11月16日（月）</strong></div></div>)(<details class="golf-details">)',
+    '<div class="golf-quick"><div><span>募集定員</span><strong>5組・20名（先着順）</strong></div><div><span>プレー費＋参加費</span><strong>14,800円＋5,000円</strong></div><div><span>申込締切</span><strong>11月16日（月）</strong></div></div>'
     + link("申込", "btn")
     + '<p style="font-size:13px">調整さんのコメント欄に平均スコアをご記入ください。</p><details class="golf-details">',
     "schedule golf primary button")
@@ -68,7 +68,7 @@ s = s.replace(
     '千葉県千葉市中央区中央3丁目15-3 朝日プラザ千葉中央</p>',
     f'千葉県千葉市中央区中央3丁目15-3 朝日プラザ千葉中央<br><a href="{DINNER_MAP}" target="_blank" rel="noopener noreferrer">懇親会場の地図を見る →</a></p>', 1)
 s = replace_one(
-    s, r'(<div class="member-event-quick">.*?</div></div></div>)(<details class="member-golf-details">)',
+    s, r'(<div class="member-event-quick"><div><span>募集定員</span><strong>5組・20名</strong></div><div><span>プレー費＋参加費</span><strong>14,800円＋5,000円</strong></div><div><span>申込締切</span><strong>11月16日（月）</strong></div></div>)(<details class="member-golf-details">)',
     '<div class="member-event-quick"><div><span>募集定員</span><strong>5組・20名</strong></div><div><span>プレー費＋参加費</span><strong>14,800円＋5,000円</strong></div><div><span>申込締切</span><strong>11月16日（月）</strong></div></div>'
     + link("申込", "btn")
     + '<p style="font-size:13px">調整さんのコメント欄に平均スコアをご記入ください。</p><details class="member-golf-details">',
