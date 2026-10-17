@@ -1,0 +1,49 @@
+name: Supabase Free Project Activity Check
+
+# Best-effort database activity to reduce inactivity pausing on the free tier.
+# Supabase can still pause the project; this is not a guaranteed uptime service.
+on:
+  schedule:
+    # 09:17 and 21:17 Japan time, daily (UTC cron).
+    - cron: '17 0,12 * * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/supabase-keepalive.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check-supabase:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Query database without reading member records
+        env:
+          SUPABASE_URL: https://dkgxoiaaavktfkyiytzk.supabase.co
+          # Public publishable key, already embedded in the public members login page.
+          SUPABASE_PUBLISHABLE_KEY: sb_publishable_rB2RnWFSQZ6M8x8bq18FuQ_KDwWXaTq
+        run: |
+          python - <<'PY'
+          import os
+          import urllib.error
+          import urllib.request
+
+          # limit=0 sends a database query but returns no personal member records.
+          url = os.environ["SUPABASE_URL"] + "/rest/v1/members?select=user_id&limit=0"
+          request = urllib.request.Request(
+              url,
+              headers={
+                  "apikey": os.environ["SUPABASE_PUBLISHABLE_KEY"],
+                  "Accept": "application/json",
+                  "User-Agent": "seishin-jissenkai-chiba-activity-check/1.0",
+              },
+          )
+          try:
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  print("Supabase database activity check: HTTP", response.status)
+          except urllib.error.HTTPError as exc:
+              print("Supabase database activity check failed: HTTP", exc.code)
+              raise
+          PY
